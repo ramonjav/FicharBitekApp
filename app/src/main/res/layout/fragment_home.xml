@@ -25,8 +25,10 @@
         android:layout_width="213dp"
         android:layout_height="53dp"
         android:layout_marginTop="52dp"
+        android:background="#32B123 "
         android:text="Final"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_iniciar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

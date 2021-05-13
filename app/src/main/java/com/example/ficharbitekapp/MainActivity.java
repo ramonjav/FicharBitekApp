@@ -59,9 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                     intent.putExtra("id_user", jsonObject.getString("id_user"));
+                    intent.putExtra("dni", jsonObject.getString("dni"));
                     intent.putExtra("mail", jsonObject.getString("mail"));
                     intent.putExtra("name", jsonObject.getString("name"));
                     intent.putExtra("lname", jsonObject.getString("lname"));
+                    intent.putExtra("type", jsonObject.getString("type"));
+
                     startActivity(intent);
 
                 } catch (JSONException e) {
