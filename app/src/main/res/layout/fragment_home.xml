@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <Button
+        android:id="@+id/button_iniciar"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="213dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="216dp"
+        android:background="#32B123 "
+        android:text="Inicio"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_final"
+        style="@style/Widget.AppCompat.Button"
+        android:layout_width="213dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="52dp"
+        android:text="Final"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_iniciar" />
+</androidx.constraintlayout.widget.ConstraintLayout>
