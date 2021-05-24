@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validarUser("http://192.168.10.47/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
+                validarUser("http://192.168.10.34/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
             }
         });
 
