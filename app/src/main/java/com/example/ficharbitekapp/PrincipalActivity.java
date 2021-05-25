@@ -77,9 +77,11 @@ public class PrincipalActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.cerrar_session:
-                Toast.makeText(PrincipalActivity.this,"Correcto", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("active_session", false);
                 startActivity(intent);
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

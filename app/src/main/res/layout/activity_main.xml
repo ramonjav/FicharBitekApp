@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/login_email"
-        android:layout_width="295dp"
-        android:layout_height="49dp"
+        android:layout_width="341dp"
+        android:layout_height="48dp"
         android:layout_marginTop="180dp"
         android:ems="10"
         android:hint="Email"
@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/login_password"
-        android:layout_width="300dp"
+        android:layout_width="341dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
         android:ems="10"

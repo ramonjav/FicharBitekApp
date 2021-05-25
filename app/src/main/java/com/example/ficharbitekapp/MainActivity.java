@@ -2,7 +2,9 @@ package com.example.ficharbitekapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
     EditText editmail, editpass;
     Button btnLogin;
 
+    String mail, pass;
+
+    Boolean active_session, tre;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +46,26 @@ public class MainActivity extends AppCompatActivity {
         editpass = findViewById(R.id.login_password);
         btnLogin = findViewById(R.id.login_button);
 
+        Intent intent = MainActivity.this.getIntent();
+        Boolean si = intent.getBooleanExtra("active_session", true);
+        if(!si){
+            guardarPreferencias("", "", false);
+        }else{
+           active_session = true;
+        }
+
+        leerpreferencias();
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validarUser("http://192.168.10.34/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
+                mail = editmail.getText().toString();
+                pass = editpass.getText().toString();
+
+                if(!mail.isEmpty() && !pass.isEmpty()){
+                    validarUser("http://192.168.10.34/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
+                }else{
+                    Toast.makeText(MainActivity.this, "No puede dejar espacios en blanco", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -56,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     jsonObject = new JSONObject(response);
 
-
                     Intent intent = new Intent(getApplicationContext(), PrincipalActivity.class);
                     intent.putExtra("id_user", jsonObject.getString("id_user"));
                     intent.putExtra("dni", jsonObject.getString("dni"));
@@ -65,8 +87,10 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("lname", jsonObject.getString("lname"));
                     intent.putExtra("type", jsonObject.getString("type"));
 
-                    startActivity(intent);
+                    guardarPreferencias(editmail.getText().toString(), editpass.getText().toString(), true);
 
+                    startActivity(intent);
+                    finish();
                 } catch (JSONException e) {
                     Toast.makeText(MainActivity.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -89,6 +113,30 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue resquestQueque = Volley.newRequestQueue(this);
         resquestQueque.add(stringRequest);
+    }
+
+    private void guardarPreferencias(String pmail, String ppass, Boolean psession){
+
+        SharedPreferences preferences = getSharedPreferences("login_pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("mail", pmail);
+        editor.putString("pass", ppass);
+        editor.putBoolean("sesion", psession);
+        editor.commit();
+    }
+
+    private void leerpreferencias(){
+
+
+            SharedPreferences preferences = getSharedPreferences("login_pref", Context.MODE_PRIVATE);
+            editmail.setText(preferences.getString("mail", ""));
+            editpass.setText(preferences.getString("pass", ""));
+            Boolean next = preferences.getBoolean("sesion", false);
+            if(next){
+                validarUser("http://192.168.10.34/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
+            }
+
+
     }
 
 }

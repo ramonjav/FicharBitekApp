@@ -102,7 +102,6 @@ public class HomeFragment extends Fragment {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         insertarUser(id, date, hour, "1", accion);
-
                                     }
                                 })
                                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -119,7 +118,7 @@ public class HomeFragment extends Fragment {
                     }
 
                     if(message.equals("Cool")){
-                        Toast.makeText(getActivity(),"Se ha fichado de manera correcta", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(),"Se ha fichado de manera correcta", Toast.LENGTH_LONG).show();
                     }
 
 
