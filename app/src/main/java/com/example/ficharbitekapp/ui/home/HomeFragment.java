@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
 
 
     private void insertarUser(String id, String date, String hour, String confirm, String accion) {
-        String URL = "http://192.168.10.34/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_fichar.php";
+        String URL = "http://192.168.1.23/bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_fichar.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 pass = editpass.getText().toString();
 
                 if(!mail.isEmpty() && !pass.isEmpty()){
-                    validarUser("http://192.168.10.34/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
+                    validarUser("http://192.168.1.23/bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
                 }else{
                     Toast.makeText(MainActivity.this, "No puede dejar espacios en blanco", Toast.LENGTH_SHORT).show();
                 }
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(MainActivity.this, error.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             editpass.setText(preferences.getString("pass", ""));
             Boolean next = preferences.getBoolean("sesion", false);
             if(next){
-                validarUser("http://192.168.10.34/git_bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
+                validarUser("http://192.168.1.23/bitek_fichar/Bitek_Fichar/bitek_fichar/api/api_login.php");
             }
 
 
